@@ -8,5 +8,5 @@ import (
 
 type UsersService interface {
 	FindAll(ctx context.Context) []response.UsersResponse
-	FindById(ctx context.Context, categoryId int) (response.UsersResponse, error)
+	FindById(ctx context.Context, categoryId int) response.UsersResponse
 }

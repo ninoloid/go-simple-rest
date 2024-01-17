@@ -25,24 +25,15 @@ func (controller *UsersControllerImpl) FindById(writer http.ResponseWriter, requ
 	id, err := strconv.Atoi(userId)
 	helper.PanicIfError(err)
 
-	userResponse, err := controller.UsersService.FindById(request.Context(), id)
+	userResponse := controller.UsersService.FindById(request.Context(), id)
 
-	if err != nil {
-		webResponse := response.WebResponse{
-			Code:   404,
-			Status: "User not found",
-		}
-
-		helper.WriteNotFoundErrorToResponseBody(writer, webResponse)
-	} else {
-		webResponse := response.WebResponse{
-			Code:   200,
-			Status: "OK",
-			Data:   userResponse,
-		}
-
-		helper.WriteToResponseBody(writer, webResponse)
+	webResponse := response.WebResponse{
+		Code:   200,
+		Status: "OK",
+		Data:   userResponse,
 	}
+
+	helper.WriteToResponseBody(writer, webResponse)
 }
 
 func (controller *UsersControllerImpl) FindAll(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
