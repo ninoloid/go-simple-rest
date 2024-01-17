@@ -1,4 +1,4 @@
-package service
+package user_service
 
 import (
 	"context"
@@ -6,15 +6,15 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/ninoloid/go-simple-rest/application/users/response"
 	"github.com/ninoloid/go-simple-rest/common/helper"
-	"github.com/ninoloid/go-simple-rest/infrastructure/users/repository"
+	user_repository "github.com/ninoloid/go-simple-rest/infrastructure/users/repository"
 )
 
 type UsersServiceImpl struct {
-	UsersRepository repository.UsersRepository
+	UsersRepository user_repository.UsersRepository
 	Validate        *validator.Validate
 }
 
-func NewUsersService(userRepository repository.UsersRepository, validate *validator.Validate) UsersService {
+func NewUsersService(userRepository user_repository.UsersRepository, validate *validator.Validate) UsersService {
 	return &UsersServiceImpl{
 		UsersRepository: userRepository,
 		Validate:        validate,

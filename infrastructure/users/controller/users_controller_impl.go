@@ -1,4 +1,4 @@
-package controller
+package user_controller
 
 import (
 	"net/http"
@@ -6,15 +6,15 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/ninoloid/go-simple-rest/application/users/response"
-	"github.com/ninoloid/go-simple-rest/application/users/service"
+	user_service "github.com/ninoloid/go-simple-rest/application/users/service"
 	"github.com/ninoloid/go-simple-rest/common/helper"
 )
 
 type UsersControllerImpl struct {
-	UsersService service.UsersService
+	UsersService user_service.UsersService
 }
 
-func NewUsersController(userService service.UsersService) UsersController {
+func NewUsersController(userService user_service.UsersService) UsersController {
 	return &UsersControllerImpl{
 		UsersService: userService,
 	}
